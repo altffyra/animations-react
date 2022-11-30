@@ -1,0 +1,219 @@
+.main {
+
+    font-family: "IBM Plex Sans", sans-serif;
+    min-height: fit-content;
+    max-width: 1200px;
+    width: 80vw;
+    background: linear-gradient(#102d78 35%, #ffffff 0%);
+    border: 1px solid black;
+    border-radius: 24px;
+    box-shadow: 5px 4px 4px rgba(0, 0, 0, 0.25);
+    position: relative;
+
+    .aniBounce{
+      position: absolute;
+      background-color: antiquewhite;
+      border: 1px solid black;
+      width:3em;
+      height:3em;
+      left:-3.1em;
+      top:1em;
+      border-radius: 333px 0px 0px 333px;
+      &:hover{
+        width:5em;
+        left:-5.1em;
+      }
+    }
+  
+    .aniLinear{
+      position: absolute;
+      background-color: antiquewhite;
+      border: 1px solid black;
+      width:3em;
+      height:3em;
+      left:-3.1em;
+      top:4em;
+      border-radius: 333px 0px 0px 333px;
+      &:hover{
+        width:5em;
+        left:-5.1em; 
+      }
+    }
+    .header {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      margin-top: 5%;
+      .title {
+        justify-self: center;
+        align-self: center;
+        font-family: "Pinyon Script", cursive;
+        color: #ffffff;
+        font-size: 50px;
+        width: 70%;
+        font-weight: 200;
+        margin: 0 1em;
+        position: relative;
+
+  
+        .additionalTitle {
+          font-family: "IBM Plex Sans", sans-serif;
+          font-size: 0.3em;
+          position: absolute;
+          left: 60%;
+          top: 70%;
+        }
+      }
+  
+      .coinIcon {
+        border-radius: 60000px;
+        padding:0.5em;
+        width: 5em;
+        height: 5em;
+        margin: 1em;
+      }
+    }
+  
+    .allContent {
+      display: flex;
+
+      justify-content: space-around;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.2em;
+      margin: 0 auto;
+      width: 90%;
+      height: fit-content;
+      border-radius: 16px;
+      border: 1px solid black;
+      background-color: #ffffff;
+      box-shadow: 5px 5px 18px 3px rgba(0, 0, 0, 0.25);
+      padding: 1em;
+  
+      .small {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        flex-direction: column;
+        padding: 1em;
+        min-width: 350px;
+        //290
+        max-width: 310px;
+        //27%
+        min-height: 280px;
+        max-height: 250px;
+        border: 1px solid black;
+        margin: 0.5em 0.5em;
+        border-radius: 7px;
+        transition: all 0.3s ease-in-out;
+        &:hover {
+          box-shadow: 10px 10px 2px rgb(51, 51, 51);
+          margin: 0px 1em 1em 0px;
+        }
+        
+      }
+      .big {
+        font-size: 35px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        box-shadow: 10px 10px 2px rgb(51, 51, 51);
+        border: 1px solid black;
+        border-radius: 24px;
+        padding: 60px;
+        position: absolute;
+        width: 80%;
+        height: 60%;
+        z-index: 0;
+        background-color: #ffffff;
+
+        transition:all ease 0.4s;
+
+        .input{
+            pointer-events : none 
+        }
+      }
+    }
+  
+    .aside {
+      max-width: 1200px;
+      width: 80vw;
+      position: absolute;
+      border-radius: 10px;
+      border: 1px solid black;
+      height: 70%;
+      z-index: 0;
+      background-color: #ffffff;
+      top: 20vh;
+      transform: translateX(+100vw);
+    }
+    .focused {
+      max-width: 1200px;
+      width: 80vw;
+      position: absolute;
+      border-radius: 10px;
+      border: 1px solid black;
+      height: 70%;
+      z-index: 0;
+      background-color: #ffffff;
+      top: 20vh;
+      transform: translateX(0vw);
+    }
+  
+    .socials {
+      display: flex;
+      justify-content: center;
+      gap: 0.4rem;
+      transition: all 0.3s ease-in-out;
+  
+      .icon {
+        margin: 1em;
+        height: 5em;
+        border-radius: 8px;
+      }
+    }
+  }
+  
+  @media screen and (max-width: 1300px) {
+    .main {
+      margin-top: 0;
+      width: 100vw;
+      border-radius: 0;
+      .header {
+        .title {
+          font-size: 30px;
+          .additionalTitle {
+            font-family: "IBM Plex Sans", sans-serif;
+            font-size: 0.3em;
+            position: absolute;
+            left: 60%;
+            top: 90%;
+          }
+        }
+      }
+    }
+  }
+  
+  @media screen and (max-width: 450px) {
+    .main {
+      width: 100vw;
+      .header {
+        .title {
+          font-size: 30px;
+          .additionalTitle {
+            font-family: "IBM Plex Sans", sans-serif;
+            font-size: 0.3em;
+            left: 0;
+            top: 100%;
+          }
+        }
+      }
+  
+      .allContent {
+
+        width: 90vw;
+      }
+    }
+  }
