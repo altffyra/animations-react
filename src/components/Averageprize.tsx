@@ -22,12 +22,51 @@ ChartJS.register(
   Legend
 );
 
-type Props = {};
+import { Flip } from "gsap/Flip";
+gsap.registerPlugin(Flip);
+import gsap from "gsap";
+
+type Props = {
+  animation: string;
+};
 
 const Averageprize = (props: Props) => {
-  const [size, setsize] = useState<boolean>(false);
 
-  const sizeElem = size ? "big" : "small";
+
+  const elemRef5 = React.useRef(
+    "  "
+  ) as unknown as React.MutableRefObject<HTMLInputElement>;
+  const state2 = Flip.getState(".animGen5");
+
+  function doFlip5() {
+ 
+    elemRef5.current.classList.toggle("big");
+    elemRef5.current.classList.toggle("small");
+    elemRef5.current.classList.add("disabled");
+    if(props.animation != "")
+    Flip.from(state2, {
+      duration: 1,
+      ease: props.animation,
+      absolute: true,
+    });
+    const divs = document.querySelectorAll(".buffer");
+    divs.forEach(element => {
+      element.classList.add("disabled");
+    });
+    disabledTimer();
+    
+  }
+
+  function disabledTimer() {
+    setTimeout(() => {
+      elemRef5.current.classList.remove("disabled");
+      const divs = document.querySelectorAll(".buffer");
+      divs.forEach((element) => {
+        element.classList.remove("disabled");
+      });
+    }, 1500);
+  }
+
   type prizeYear = {
     awardYear: string[];
     prizeAmount: number[];
@@ -67,7 +106,7 @@ const Averageprize = (props: Props) => {
   };
 
   const labels = prizeYearData.awardYear;
- const f = " f"
+  const f = " f";
   const data = {
     labels,
     datasets: [
@@ -81,9 +120,9 @@ const Averageprize = (props: Props) => {
   };
 
   return (
-    <div onClick={() => setsize(!size)} className={sizeElem+f}>
+    <div className="buffer">
+    <div ref={elemRef5} onClick={() => doFlip5()} className={"small animGen5"}>
       Prize Reward:
-      {size ? (
         <div className="ptag" onClick={(e) => e.stopPropagation()}>
           <button onClick={() => setprizeSum(prizeYearData.prizeAmount)}>
             Prize given
@@ -94,10 +133,8 @@ const Averageprize = (props: Props) => {
             Adjusted to inflation
           </button>
         </div>
-      ) : (
-        ""
-      )}
       <Line height={300} options={options} data={data} />
+    </div>
     </div>
   );
 };

@@ -4,12 +4,56 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import dataJson from "../assets/json_award.json";
 import { useState } from "react";
 ChartJS.register(ArcElement, Tooltip, Legend);
+import {Flip} from 'gsap/Flip'
+gsap.registerPlugin(Flip);
+import gsap from "gsap";
 
-type Props = {};
+
+type Props = {
+  animation:string
+};
 
 const Ammountcategories = (props: Props) => {
   const [size, setsize] = useState<boolean>(false);
- const f = "hej"
+
+
+  const elemRef = React.useRef(
+    "cat"
+  ) as unknown as React.MutableRefObject<HTMLInputElement>;
+  const state = Flip.getState(".animGen1");
+
+  function doFlip() {
+    elemRef.current.classList.toggle("small");
+    elemRef.current.classList.toggle("big");
+    elemRef.current.classList.add("disabled");
+    if(props.animation != "")
+    Flip.from(state, {
+      duration: 1,
+      ease: props.animation,
+      absolute: false,
+    });
+    const divs:NodeListOf<HTMLDivElement> = document.querySelectorAll(".buffer");
+    divs.forEach(element => {
+      element.classList.add("disabled");
+    });
+    disabledTimer();
+  }
+
+  function disabledTimer() {
+    setTimeout(() => {
+      elemRef.current.classList.remove("disabled");
+      const divs:NodeListOf<HTMLDivElement> = document.querySelectorAll(".buffer");
+      divs.forEach((element) => {
+        element.classList.remove("disabled");
+      });
+    }, 1500);
+  }
+
+
+
+
+
+
   const allcountries: string[] = dataJson.map((windata) => windata.category.en);
   const multiArray: string[] = [...new Set(allcountries)];
   let wins: any | number[] = {};
@@ -70,9 +114,11 @@ const Ammountcategories = (props: Props) => {
   };
 
   return (
-    <div onClick={() => setsize(!size)} className={sizeElem}>
+    <div className="buffer">
+    <div ref={elemRef} onClick={() => doFlip()} className={"small animGen1"}>
       <p>Category has been awarded</p>
       <Pie  options={options} data={data}  />
+    </div>
     </div>
   );
 };

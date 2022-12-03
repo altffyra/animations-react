@@ -9,11 +9,48 @@ import {
   Legend,
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
+import { Flip } from "gsap/Flip";
+gsap.registerPlugin(Flip);
+import gsap from "gsap";
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip, Legend);
 
-type Props = {};
+type Props = {
+  animation: string;
+};
 const CategoryForYear = (props: Props) => {
+  const elemRef2 = React.useRef(
+    ""
+  ) as unknown as React.MutableRefObject<HTMLInputElement>;
+  const state = Flip.getState(".animGen2");
+
+  function doFlip2() {
+    elemRef2.current.classList.toggle("small");
+    elemRef2.current.classList.toggle("big");
+    elemRef2.current.classList.add("disabled");
+    if(props.animation != "")
+    Flip.from(state, {
+      duration: 1,
+      ease: props.animation,
+      absolute: true,
+    });
+    const divs = document.querySelectorAll(".buffer");
+    divs.forEach((element) => {
+      element.classList.add("disabled");
+    });
+    disabledTimer();
+  }
+
+  function disabledTimer() {
+    setTimeout(() => {
+      elemRef2.current.classList.remove("disabled");
+      const divs = document.querySelectorAll(".buffer");
+      divs.forEach((element) => {
+        element.classList.remove("disabled");
+      });
+    }, 1500);
+  }
+
   const [size, setsize] = useState<boolean>(false);
   const sizeElem = size ? "big" : "small";
   const [chosenYear, setchosenYear] = useState<string>("2019");
@@ -62,19 +99,17 @@ const CategoryForYear = (props: Props) => {
   };
 
   return (
-    <div onClick={() => setsize(!size)} className={sizeElem}>
+    <div className="buffer">
+    <div ref={elemRef2} onClick={() => doFlip2()} className={"small animGen2"}>
       Awards given year:
-      {size ? (
         <input
           onClick={(e) => e.stopPropagation()}
           type="number"
           value={chosenYear}
           onChange={(e) => setchosenYear(e.target.value)}
         />
-      ) : (
-        ""
-      )}
       <Bar options={options} data={data} />
+    </div>
     </div>
   );
 };

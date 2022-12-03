@@ -1,60 +1,108 @@
-import React from "react";
+import React, { useLayoutEffect, useState, useRef, useEffect } from "react";
 import Ammountcategories from "./Ammountcategories";
 import Averageprize from "./Averageprize";
 import Genderwins from "./Genderwins";
 import CategoryForYear from "./CategoryForYear";
-import coin from "../assets/coin.jpeg"
-import fbook from "../assets/facebookLogo.png"
-import insta from "../assets/instaLogo.png"
-import twitter from "../assets/twitterLogo.png"
-
+import coin from "../assets/coin.jpeg";
+import fbook from "../assets/facebookLogo.png";
+import insta from "../assets/instaLogo.png";
+import twitter from "../assets/twitterLogo.png";
+import spring from "../assets/spring.png";
+import bounce from "../assets/bounce.png";
+import line from "../assets/linear.png";
+import noani from "../assets/noAni.png";
+import steps from "../assets/steps.png";
+import backout from "../assets/backout.png";
+import heavy from "../assets/heavy.png";
+import gsap from "gsap";
 
 type Props = {};
 
 const Main = (props: Props) => {
+  const flip = useRef();
+  useLayoutEffect(() => {
+    let ctx = gsap.context(() => {
+      gsap.to(".flip", { rotation: 360 });
+    });
+    return () => ctx.revert();
+    setAnimation("none");
+  }, []);
 
-    
-
+  const [animation, setAnimation] = useState<string>("");
+  const aniLineActive = animation == "none" ? "active" : "";
+  const aniBounceActive = animation == "bounce.out" ? "active" : "";
+  const aniSpringActive = animation == "elastic" ? "active" : "";
+  const aniNoneActive = animation == "" ? "active" : " ";
+  const stepsActive = animation == "steps(6)" ? "active" : " ";
+  const backActive = animation == "back.out(30)" ? "active" : "";
+  const heavyActive = animation == "power1.in" ? "active" : "";
 
   return (
     <div className="main">
-      <div className="aniBounce"></div>
-      <div className="aniLinear"></div>
+      <div
+        className={"aniHeavy flip " + heavyActive}
+        onClick={() => setAnimation("power1.in")}
+      >
+        <img src={heavy}></img>
+      </div>
+
+      <div
+        className={"aniBack flip " + backActive}
+        onClick={() => setAnimation("back.out(30)")}
+      >
+        <img src={backout}></img>
+      </div>
+
+      <div
+        className={"aniSteps flip " + stepsActive}
+        onClick={() => setAnimation("steps(6)")}
+      >
+        <img src={steps}></img>
+      </div>
+
+      <div
+        className={"aniNone flip " + aniNoneActive}
+        onClick={() => setAnimation("")}
+      >
+        <img src={noani}></img>
+      </div>
+      <div
+        className={"aniLinear flip " + aniLineActive}
+        onClick={() => setAnimation("none")}
+      >
+        <img src={line}></img>
+      </div>
+      <div
+        className={"aniBounce flip " + aniBounceActive}
+        onClick={() => setAnimation("bounce.out")}
+      >
+        <img src={bounce}></img>
+      </div>
+      <div
+        className={"aniSpring flip " + aniSpringActive}
+        onClick={() => setAnimation("elastic")}
+      >
+        <img src={spring}></img>
+      </div>
       <div className="header">
-        <img
-          className="coinIcon"
-          src={coin}
-          alt="Alfred Nobels coin"
-        />
-        <h1 className="title">
+        <img className="coinIcon" src={coin} alt="Alfred Nobels coin" />
+        <h1 className="title flip">
           Alfred Nobels pristagare genom historien
           <p className="additionalTitle">Diagram med data från starten.</p>
         </h1>
       </div>
 
       <div className="allContent">
-        <Averageprize />
-        <CategoryForYear />
-        <Ammountcategories />
-        <Genderwins />
+        <Ammountcategories animation={animation} />
+        <CategoryForYear animation={animation} />
+        <Genderwins animation={animation} />
+        <Averageprize animation={animation} />
       </div>
 
       <div className="socials">
-        <img
-          className="icon"
-          src={fbook}
-          alt="facebook logo"
-        />
-        <img
-          className="icon"
-          src={insta}
-          alt="instagram logo"
-        />
-        <img
-          className="icon"
-          src={twitter}
-          alt="twitter logo"
-        />
+        <img className="icon" src={fbook} alt="facebook logo" />
+        <img className="icon" src={insta} alt="instagram logo" />
+        <img className="icon" src={twitter} alt="twitter logo" />
       </div>
     </div>
   );

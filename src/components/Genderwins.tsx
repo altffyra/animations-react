@@ -1,23 +1,55 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Pie } from "react-chartjs-2";
 import dataJson from "../assets/json_laureates.json";
-
+import { Flip } from "gsap/Flip";
+gsap.registerPlugin(Flip);
+import gsap from "gsap";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-type Props = {};
+type Props = {
+  animation: string;
+};
 
 const Genderwins = (props: Props) => {
-  const [size, setsize] = useState<boolean>(false);
-  const sizeElem = size ? "big" : "small";
+  const elemRef3 = React.useRef(
+    ""
+  ) as unknown as React.MutableRefObject<HTMLInputElement>;
+  const state = Flip.getState(".animGen3");
 
-  const allgender: any = dataJson.map(
-    (token) => token.gender
-  );
+  function doFlip3() {
+    elemRef3.current.classList.toggle("small");
+    elemRef3.current.classList.toggle("big");
+    elemRef3.current.classList.add("disabled");
+    if (props.animation != "")
+      Flip.from(state, {
+        duration: 1,
+        ease: props.animation,
+        absolute: true,
+      });
+
+    const divs = document.querySelectorAll(".buffer");
+    divs.forEach((element) => {
+      element.classList.add("disabled");
+    });
+    disabledTimer();
+  }
+
+  function disabledTimer() {
+    setTimeout(() => {
+      elemRef3.current.classList.remove("disabled");
+      const divs = document.querySelectorAll(".buffer");
+      divs.forEach((element) => {
+        element.classList.remove("disabled");
+      });
+    }, 1500);
+  }
+
+  const allgender: any = dataJson.map((token) => token.gender);
   const multiArray: any = [...new Set(allgender)];
   let genderArr: any = [];
-  multiArray.forEach((multiArr: any[]| any) => {
+  multiArray.forEach((multiArr: any[] | any) => {
     genderArr[multiArr] = [];
     allgender.forEach((winner: any) => {
       multiArr == winner ? genderArr[multiArr].push(winner) : null;
@@ -65,9 +97,15 @@ const Genderwins = (props: Props) => {
     ],
   };
   return (
-    <div onClick={() => setsize(!size)} className={sizeElem}>
-      <p>Gender diversity</p>
-      <Pie options={options} data={data} />
+    <div className="buffer">
+      <div
+        ref={elemRef3}
+        onClick={() => doFlip3()}
+        className={"small animGen3"}
+      >
+        <p>Gender diversity</p>
+        <Pie options={options} data={data} />
+      </div>
     </div>
   );
 };

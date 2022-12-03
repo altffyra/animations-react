@@ -1,219 +1,443 @@
 .main {
+  font-family: "IBM Plex Sans", sans-serif;
+  min-height: fit-content;
+  max-width: 1200px;
+  width: 80vw;
+  background: linear-gradient(#102d78 35%, #ffffff 0%);
+  border: 1px solid black;
+  border-radius: 24px;
+  box-shadow: 5px 4px 4px rgba(0, 0, 0, 0.25);
+  position: relative;
+  display: flex;
+  flex-direction: column;
 
-    font-family: "IBM Plex Sans", sans-serif;
-    min-height: fit-content;
+ 
+  .aniNone {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    background-color: antiquewhite;
+    border: 1px solid black;
+    width: 3em;
+    height: 3em;
+    left: -3.1em;
+    top: 20em;
+    border-radius: 333px 0px 0px 333px;
+    transition: all 0.3s;
+    &:hover {
+      width: 5em;
+      left: -5.1em;
+      img {
+        width: 2.5em;
+        height: 2.5em;
+      }
+    }
+    img {
+      width: 2em;
+      height: 2em;
+    }
+  }
+
+  .aniBounce {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    background-color: antiquewhite;
+    border: 1px solid black;
+    width: 3em;
+    height: 3em;
+    left: -3.1em;
+    top: 4em;
+    border-radius: 333px 0px 0px 333px;
+    transition: all 0.3s;
+    &:hover {
+      width: 5em;
+      left: -5.1em;
+      img {
+        width: 2.5em;
+        height: 2.5em;
+      }
+    }
+    img {
+      width: 2em;
+      height: 2em;
+    }
+  }
+
+  
+  .aniBack {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    background-color: antiquewhite;
+    border: 1px solid black;
+    width: 3em;
+    height: 3em;
+    left: -3.1em;
+    top: 10em;
+    border-radius: 333px 0px 0px 333px;
+    transition: all 0.3s;
+    &:hover {
+      width: 5em;
+      left: -5.1em;
+      img {
+        width: 2.5em;
+        height: 2.5em;
+      }
+    }
+    img {
+      width: 2em;
+      height: 2em;
+    }
+  }
+
+  
+  .aniHeavy {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    background-color: antiquewhite;
+    border: 1px solid black;
+    width: 3em;
+    height: 3em;
+    left: -3.1em;
+    top: 16em;
+    border-radius: 333px 0px 0px 333px;
+    transition: all 0.3s;
+    &:hover {
+      width: 5em;
+      left: -5.1em;
+      img {
+        width: 2.5em;
+        height: 2.5em;
+      }
+    }
+    img {
+      width: 2em;
+      height: 2em;
+    }
+  }
+
+
+  .aniSteps {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    background-color: antiquewhite;
+    border: 1px solid black;
+    width: 3em;
+    height: 3em;
+    left: -3.1em;
+    top: 13em;
+    border-radius: 333px 0px 0px 333px;
+    transition: all 0.3s;
+    &:hover {
+      width: 5em;
+      left: -5.1em;
+      img {
+        width: 2.5em;
+        height: 2.5em;
+      }
+    }
+    img {
+      width: 2em;
+      height: 2em;
+    }
+  }
+
+  .aniLinear {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    background-color: antiquewhite;
+    border: 1px solid black;
+    width: 3em;
+    height: 3em;
+    left: -3.1em;
+    top: 1em;
+    border-radius: 333px 0px 0px 333px;
+    transition: all 0.3s;
+    &:hover {
+      width: 5em;
+      left: -5.1em;
+      img {
+        width: 2.5em;
+        height: 2.5em;
+      }
+    }
+    img {
+      width: 2em;
+      height: 2em;
+    }
+  }
+  .aniSpring {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    background-color: antiquewhite;
+    border: 1px solid black;
+    width: 3em;
+    height: 3em;
+    left: -3.1em;
+    top: 7em;
+    border-radius: 333px 0px 0px 333px;
+    transition: all 0.3s;
+
+    img {
+      width: 2em;
+      height: 2em;
+    }
+    &:hover {
+      width: 5em;
+      left: -5.1em;
+      img {
+        width: 2.5em;
+        height: 2.5em;
+      }
+    }
+
+
+  }
+
+  .active{
+    background-color: rgb(70, 175, 70);
+  }
+  .header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 5%;
+    .title {
+      justify-self: center;
+      align-self: center;
+      font-family: "Pinyon Script", cursive;
+      color: #ffffff;
+      font-size: 50px;
+      width: 70%;
+      font-weight: 200;
+      margin: 0 1em;
+      position: relative;
+
+      .additionalTitle {
+        font-family: "IBM Plex Sans", sans-serif;
+        font-size: 0.3em;
+        position: absolute;
+        left: 60%;
+        top: 70%;
+      }
+    }
+
+    .coinIcon {
+      border-radius: 60000px;
+      padding: 0.5em;
+      width: 5em;
+      height: 5em;
+      margin: 1em;
+    }
+  }
+
+  .allContent {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-gap: 0.5em;
+    margin: 0 auto;
+    width: 90%;
+    padding:1em;
+    height: fit-content;
+    border-radius: 16px;
+    border: 1px solid black;
+    background-color: #ffffff;
+    box-shadow: 5px 5px 18px 3px rgba(0, 0, 0, 0.25);
+    
+    .buffer{
+      justify-self: center;
+      align-self: center;
+      margin: 0.5em 0.5em;
+      width:fit-content;
+      border-radius: 7px;
+      transition: all 0.3s;
+
+
+    }
+
+    .buffer:hover {
+      border-radius: 7px;
+
+      box-shadow: 10px 10px 2px rgb(51, 51, 51);
+      margin: 0px 1em 1em 0px;
+
+  }
+
+
+    .disabled{
+      pointer-events:none;
+    }
+    .small {
+
+      border-radius: 7px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      flex-direction: column;
+      padding: 3.7em;
+      max-width: 310px;
+      max-height: 250px;
+      border: 1px solid black;
+      background-color: #ffffff;
+
+
+      button{
+        pointer-events: auto;
+        border-radius: 999px;
+        background-color: transparent;
+        border: 2px solid #102d78;
+        font-size: 12px;
+        margin: 0 auto;
+      }
+      input[type="number"]{
+        pointer-events: none;
+        text-align: center;
+        padding:0.3em;
+        border-radius: 999px;
+        background-color: transparent;
+        border: none;
+        font-size: 19px;
+        margin: 0 auto;
+
+      }
+      
+
+
+    }
+
+    .big {
+      left:0;
+      top:0;
+      font-size: 35px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      box-shadow: 10px 10px 2px rgb(51, 51, 51);
+      border: 1px solid black;
+      border-radius: 16px;
+      padding: 1.7em;
+      position:absolute;
+      width: 90%;
+      height: 85%;
+      background-color: #ffffff;
+
+      input {
+        pointer-events: none;
+      }
+      button{
+        border-radius: 999px;
+        background-color: transparent;
+        border: 4px solid #102d78;
+        font-size: 19px;
+        margin: 0 auto;
+      }
+
+      input[type="number"]{
+        pointer-events: all;
+        text-align: center;
+        padding:0.3em;
+        border-radius: 999px;
+        background-color: transparent;
+        border: 4px solid #102d78;
+        font-size: 32px;
+        margin: 0 auto;
+
+
+      }
+    }
+  }
+
+  .aside {
     max-width: 1200px;
     width: 80vw;
-    background: linear-gradient(#102d78 35%, #ffffff 0%);
+    position: absolute;
+    border-radius: 10px;
     border: 1px solid black;
-    border-radius: 24px;
-    box-shadow: 5px 4px 4px rgba(0, 0, 0, 0.25);
-    position: relative;
+    height: 70%;
+    z-index: 0;
+    background-color: #ffffff;
+    top: 20vh;
+    transform: translateX(+100vw);
+  }
+  .focused {
+    max-width: 1200px;
+    width: 80vw;
+    position: absolute;
+    border-radius: 10px;
+    border: 1px solid black;
+    height: 70%;
+    z-index: 0;
+    background-color: #ffffff;
+    top: 20vh;
+    transform: translateX(0vw);
+  }
 
-    .aniBounce{
-      position: absolute;
-      background-color: antiquewhite;
-      border: 1px solid black;
-      width:3em;
-      height:3em;
-      left:-3.1em;
-      top:1em;
-      border-radius: 333px 0px 0px 333px;
-      &:hover{
-        width:5em;
-        left:-5.1em;
-      }
+  .socials {
+    display: flex;
+    justify-content: center;
+    gap: 0.4rem;
+    transition: all 0.3s ease-in-out;
+
+    .icon {
+      margin: 1em;
+      height: 5em;
+      border-radius: 8px;
     }
-  
-    .aniLinear{
-      position: absolute;
-      background-color: antiquewhite;
-      border: 1px solid black;
-      width:3em;
-      height:3em;
-      left:-3.1em;
-      top:4em;
-      border-radius: 333px 0px 0px 333px;
-      &:hover{
-        width:5em;
-        left:-5.1em; 
-      }
-    }
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  .main {
+    width: 100vw;
+    border-radius: 0;
     .header {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      margin-top: 5%;
       .title {
-        justify-self: center;
-        align-self: center;
-        font-family: "Pinyon Script", cursive;
-        color: #ffffff;
-        font-size: 50px;
-        width: 70%;
-        font-weight: 200;
-        margin: 0 1em;
-        position: relative;
-
-  
+        font-size: 30px;
         .additionalTitle {
           font-family: "IBM Plex Sans", sans-serif;
           font-size: 0.3em;
           position: absolute;
           left: 60%;
-          top: 70%;
+          top: 90%;
         }
       }
-  
-      .coinIcon {
-        border-radius: 60000px;
-        padding:0.5em;
-        width: 5em;
-        height: 5em;
-        margin: 1em;
+    }
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .main {
+    width: 100vw;
+    .header {
+      .title {
+        font-size: 30px;
+        .additionalTitle {
+          font-family: "IBM Plex Sans", sans-serif;
+          font-size: 0.3em;
+          left: 0;
+          top: 100%;
+        }
       }
     }
-  
+
     .allContent {
-      display: flex;
-
-      justify-content: space-around;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 0.2em;
-      margin: 0 auto;
-      width: 90%;
-      height: fit-content;
-      border-radius: 16px;
-      border: 1px solid black;
-      background-color: #ffffff;
-      box-shadow: 5px 5px 18px 3px rgba(0, 0, 0, 0.25);
-      padding: 1em;
-  
-      .small {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        overflow: hidden;
-        flex-direction: column;
-        padding: 1em;
-        min-width: 350px;
-        //290
-        max-width: 310px;
-        //27%
-        min-height: 280px;
-        max-height: 250px;
-        border: 1px solid black;
-        margin: 0.5em 0.5em;
-        border-radius: 7px;
-        transition: all 0.3s ease-in-out;
-        &:hover {
-          box-shadow: 10px 10px 2px rgb(51, 51, 51);
-          margin: 0px 1em 1em 0px;
-        }
-        
-      }
-      .big {
-        font-size: 35px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        box-shadow: 10px 10px 2px rgb(51, 51, 51);
-        border: 1px solid black;
-        border-radius: 24px;
-        padding: 60px;
-        position: absolute;
-        width: 80%;
-        height: 60%;
-        z-index: 0;
-        background-color: #ffffff;
-
-        transition:all ease 0.4s;
-
-        .input{
-            pointer-events : none 
-        }
-      }
-    }
-  
-    .aside {
-      max-width: 1200px;
-      width: 80vw;
-      position: absolute;
-      border-radius: 10px;
-      border: 1px solid black;
-      height: 70%;
-      z-index: 0;
-      background-color: #ffffff;
-      top: 20vh;
-      transform: translateX(+100vw);
-    }
-    .focused {
-      max-width: 1200px;
-      width: 80vw;
-      position: absolute;
-      border-radius: 10px;
-      border: 1px solid black;
-      height: 70%;
-      z-index: 0;
-      background-color: #ffffff;
-      top: 20vh;
-      transform: translateX(0vw);
-    }
-  
-    .socials {
-      display: flex;
-      justify-content: center;
-      gap: 0.4rem;
-      transition: all 0.3s ease-in-out;
-  
-      .icon {
-        margin: 1em;
-        height: 5em;
-        border-radius: 8px;
-      }
+      width: 90vw;
     }
   }
-  
-  @media screen and (max-width: 1300px) {
-    .main {
-      margin-top: 0;
-      width: 100vw;
-      border-radius: 0;
-      .header {
-        .title {
-          font-size: 30px;
-          .additionalTitle {
-            font-family: "IBM Plex Sans", sans-serif;
-            font-size: 0.3em;
-            position: absolute;
-            left: 60%;
-            top: 90%;
-          }
-        }
-      }
-    }
-  }
-  
-  @media screen and (max-width: 450px) {
-    .main {
-      width: 100vw;
-      .header {
-        .title {
-          font-size: 30px;
-          .additionalTitle {
-            font-family: "IBM Plex Sans", sans-serif;
-            font-size: 0.3em;
-            left: 0;
-            top: 100%;
-          }
-        }
-      }
-  
-      .allContent {
-
-        width: 90vw;
-      }
-    }
-  }
+}
