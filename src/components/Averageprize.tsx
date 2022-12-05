@@ -31,30 +31,29 @@ type Props = {
 };
 
 const Averageprize = (props: Props) => {
-
-
   const elemRef5 = React.useRef(
     "  "
   ) as unknown as React.MutableRefObject<HTMLInputElement>;
   const state2 = Flip.getState(".animGen5");
 
   function doFlip5() {
- 
-    elemRef5.current.classList.toggle("big");
     elemRef5.current.classList.toggle("small");
+    elemRef5.current.classList.toggle("big");
     elemRef5.current.classList.add("disabled");
-    if(props.animation != "")
-    Flip.from(state2, {
-      duration: 1,
-      ease: props.animation,
-      absolute: true,
-    });
+    if (props.animation != "")
+      Flip.from(state2, {
+        duration: 1,
+        ease: props.animation,
+        absolute:true,
+        prune:true,
+        scale:true,
+        simple:true
+      });
     const divs = document.querySelectorAll(".buffer");
-    divs.forEach(element => {
+    divs.forEach((element) => {
       element.classList.add("disabled");
     });
     disabledTimer();
-    
   }
 
   function disabledTimer() {
@@ -94,6 +93,9 @@ const Averageprize = (props: Props) => {
   const options = {
     responsive: true,
     maintainAspectRatio: false,
+    layout: {
+      padding: 70
+  },
     plugins: {
       legend: {
         position: "top" as const,
@@ -115,14 +117,19 @@ const Averageprize = (props: Props) => {
         data: prizeSum,
         borderColor: "rgb(255, 99, 132)",
         backgroundColor: "rgba(255, 99, 132, 0.5)",
+        events: ['mousemove', 'mouseout', 'touchstart', 'touchmove'],
       },
     ],
   };
 
   return (
     <div className="buffer">
-    <div ref={elemRef5} onClick={() => doFlip5()} className={"small animGen5"}>
-      Prize Reward:
+      <div
+        ref={elemRef5}
+        onClick={() => doFlip5()}
+        className={"small animGen5"}
+      >
+        <p>Prize Reward:</p>
         <div className="ptag" onClick={(e) => e.stopPropagation()}>
           <button onClick={() => setprizeSum(prizeYearData.prizeAmount)}>
             Prize given
@@ -133,8 +140,8 @@ const Averageprize = (props: Props) => {
             Adjusted to inflation
           </button>
         </div>
-      <Line height={300} options={options} data={data} />
-    </div>
+        <Line height={300} options={options} data={data} />
+      </div>
     </div>
   );
 };

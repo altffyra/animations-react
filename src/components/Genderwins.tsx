@@ -27,6 +27,7 @@ const Genderwins = (props: Props) => {
         duration: 1,
         ease: props.animation,
         absolute: true,
+        scale:true
       });
 
     const divs = document.querySelectorAll(".buffer");
@@ -59,6 +60,9 @@ const Genderwins = (props: Props) => {
   const options = {
     responsive: true,
     maintainAspectRatio: false,
+    layout: {
+      padding: 60
+  },
     plugins: {
       legend: {
         position: "top" as const,
@@ -93,6 +97,7 @@ const Genderwins = (props: Props) => {
           "rgba(255, 159, 64, 1)",
         ],
         borderWidth: 1,
+        events: ['mousemove', 'mouseout', 'touchstart', 'touchmove'],
       },
     ],
   };

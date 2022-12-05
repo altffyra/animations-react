@@ -35,13 +35,13 @@ const Main = (props: Props) => {
   const aniNoneActive = animation == "" ? "active" : " ";
   const stepsActive = animation == "steps(6)" ? "active" : " ";
   const backActive = animation == "back.out(30)" ? "active" : "";
-  const heavyActive = animation == "power1.in" ? "active" : "";
+  const heavyActive = animation == "power2.in" ? "active" : "";
 
   return (
     <div className="main">
       <div
         className={"aniHeavy flip " + heavyActive}
-        onClick={() => setAnimation("power1.in")}
+        onClick={() => setAnimation("power2.in")}
       >
         <img src={heavy}></img>
       </div>

@@ -28,12 +28,14 @@ const CategoryForYear = (props: Props) => {
     elemRef2.current.classList.toggle("small");
     elemRef2.current.classList.toggle("big");
     elemRef2.current.classList.add("disabled");
-    if(props.animation != "")
-    Flip.from(state, {
-      duration: 1,
-      ease: props.animation,
-      absolute: true,
-    });
+    if (props.animation != "")
+      Flip.from(state, {
+        duration: 1,
+        ease: props.animation,
+        absolute: true,
+        scale:true,
+        fade:true
+      });
     const divs = document.querySelectorAll(".buffer");
     divs.forEach((element) => {
       element.classList.add("disabled");
@@ -58,10 +60,21 @@ const CategoryForYear = (props: Props) => {
     (yeardata) => yeardata.awardYear == chosenYear
   );
 
+
   const options = {
     responsive: true,
     maintainAspectRatio: false,
-    plugins: {},
+    layout: {
+      padding: 60
+  },
+    plugins: {
+      legend:{
+        labels:{
+          font:{
+            size:0}
+        }
+      }
+    },
   };
   let colors = [
     "#2dF35b",
@@ -78,7 +91,7 @@ const CategoryForYear = (props: Props) => {
     yearFilter[2]?.category.en,
     yearFilter[3]?.category.en,
     yearFilter[4]?.category.en,
-    yearFilter[5]?.category.en,
+    yearFilter[5]?.category.en
   ];
 
   const data = {
@@ -94,22 +107,27 @@ const CategoryForYear = (props: Props) => {
           yearFilter[5]?.laureates.length,
         ],
         backgroundColor: colors,
+        events: ['mousemove', 'mouseout', 'touchstart', 'touchmove'],
       },
     ],
   };
 
   return (
     <div className="buffer">
-    <div ref={elemRef2} onClick={() => doFlip2()} className={"small animGen2"}>
-      Awards given year:
+      <div
+        ref={elemRef2}
+        onClick={() => doFlip2()}
+        className={"small animGen2"}
+      >
+        <p>Awards given year:</p>
         <input
           onClick={(e) => e.stopPropagation()}
           type="number"
           value={chosenYear}
           onChange={(e) => setchosenYear(e.target.value)}
         />
-      <Bar options={options} data={data} />
-    </div>
+        <Bar options={options} data={data} />
+      </div>
     </div>
   );
 };

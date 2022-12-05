@@ -4,21 +4,18 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import dataJson from "../assets/json_award.json";
 import { useState } from "react";
 ChartJS.register(ArcElement, Tooltip, Legend);
-import {Flip} from 'gsap/Flip'
+import { Flip } from "gsap/Flip";
 gsap.registerPlugin(Flip);
 import gsap from "gsap";
 
-
 type Props = {
-  animation:string
+  animation: string;
 };
 
 const Ammountcategories = (props: Props) => {
-  const [size, setsize] = useState<boolean>(false);
-
 
   const elemRef = React.useRef(
-    "cat"
+    ""
   ) as unknown as React.MutableRefObject<HTMLInputElement>;
   const state = Flip.getState(".animGen1");
 
@@ -26,14 +23,18 @@ const Ammountcategories = (props: Props) => {
     elemRef.current.classList.toggle("small");
     elemRef.current.classList.toggle("big");
     elemRef.current.classList.add("disabled");
-    if(props.animation != "")
-    Flip.from(state, {
-      duration: 1,
-      ease: props.animation,
-      absolute: false,
-    });
-    const divs:NodeListOf<HTMLDivElement> = document.querySelectorAll(".buffer");
-    divs.forEach(element => {
+    
+    if (props.animation != "")
+      Flip.from(state, {
+        duration: 1,
+        ease: props.animation,
+        absolute: true,
+        scale:true
+        
+      });
+    const divs: NodeListOf<HTMLDivElement> =
+      document.querySelectorAll(".buffer");
+    divs.forEach((element) => {
       element.classList.add("disabled");
     });
     disabledTimer();
@@ -42,17 +43,13 @@ const Ammountcategories = (props: Props) => {
   function disabledTimer() {
     setTimeout(() => {
       elemRef.current.classList.remove("disabled");
-      const divs:NodeListOf<HTMLDivElement> = document.querySelectorAll(".buffer");
+      const divs: NodeListOf<HTMLDivElement> =
+        document.querySelectorAll(".buffer");
       divs.forEach((element) => {
         element.classList.remove("disabled");
       });
     }, 1500);
   }
-
-
-
-
-
 
   const allcountries: string[] = dataJson.map((windata) => windata.category.en);
   const multiArray: string[] = [...new Set(allcountries)];
@@ -63,14 +60,16 @@ const Ammountcategories = (props: Props) => {
       multiArr == winner ? wins[multiArr].push(winner) : null;
     });
   });
-  const sizeElem = size ? "big" : "small";
 
-  const orderedListNames5:string[] = Object.keys(wins).slice();
 
+  const orderedListNames5: string[] = Object.keys(wins).slice();
 
   const options = {
     responsive: true,
-    maintainAspectRatio:false,
+    maintainAspectRatio: false,
+    layout: {
+      padding: 60
+  },
   };
 
   const data = {
@@ -109,16 +108,17 @@ const Ammountcategories = (props: Props) => {
           "rgba(255, 159, 64, 1)",
         ],
         borderWidth: 1,
+        events: ['mousemove', 'mouseout', 'touchstart', 'touchmove'],
       },
     ],
   };
 
   return (
     <div className="buffer">
-    <div ref={elemRef} onClick={() => doFlip()} className={"small animGen1"}>
-      <p>Category has been awarded</p>
-      <Pie  options={options} data={data}  />
-    </div>
+      <div ref={elemRef} onClick={() => doFlip()} className={"small animGen1"}>
+        <p>Category has been awarded</p>
+        <Pie options={options} data={data} />
+      </div>
     </div>
   );
 };
