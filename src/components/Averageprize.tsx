@@ -31,10 +31,12 @@ type Props = {
 };
 
 const Averageprize = (props: Props) => {
+
   //// GSAP ANIMATIONS
   const elemRef5 =
     React.useRef() as unknown as React.MutableRefObject<HTMLInputElement>;
   const state2 = Flip.getState(".animGen5");
+
   function doFlip5(): void {
     elemRef5.current.classList.toggle("small");
     elemRef5.current.classList.toggle("big");
@@ -62,7 +64,7 @@ const Averageprize = (props: Props) => {
       divs.forEach((element) => {
         element.classList.remove("disabled");
       });
-    }, 1500);
+    }, 1000);
   }
 
   /// CHART JS CALC
@@ -122,8 +124,6 @@ const Averageprize = (props: Props) => {
     ],
   };
 
-
-
   return (
     <div className="buffer">
       <div
@@ -133,16 +133,10 @@ const Averageprize = (props: Props) => {
       >
         <p>Prize Reward:</p>
         <div className="ptag" onClick={(e) => e.stopPropagation()}>
-          <button
-
-            onClick={() => setprizeSum(YearData.prizeAmount)}
-          >
+          <button onClick={() => setprizeSum(YearData.prizeAmount)}>
             Prize given
           </button>
-          <button
-
-            onClick={() => setprizeSum(YearData.prizeAmountAdjusted)}
-          >
+          <button onClick={() => setprizeSum(YearData.prizeAmountAdjusted)}>
             Adjusted to inflation
           </button>
         </div>

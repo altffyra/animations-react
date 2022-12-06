@@ -20,6 +20,7 @@ type Props = {};
 
 const Main = (props: Props) => {
   const flip = useRef();
+  
   useLayoutEffect(() => {
     let ctx = gsap.context(() => {
       gsap.to(".flip", { rotation: 360 });
@@ -92,11 +93,10 @@ const Main = (props: Props) => {
       </div>
 
       <div className="allContent">
-      <Averageprize animation={animation} />
+        <Averageprize animation={animation} />
         <Ammountcategories animation={animation} />
         <CategoryForYear animation={animation} />
         <Genderwins animation={animation} />
-
       </div>
 
       <div className="socials">

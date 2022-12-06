@@ -83,7 +83,6 @@ const CategoryForYear = (props: Props) => {
     "#Bad1ce",
   ];
 
-
   //  KATEGORINAMN SAMT UPPSÄKRING AV KRASHER
   const labels = [];
   if (yearFilter?.length > 0)
@@ -92,7 +91,6 @@ const CategoryForYear = (props: Props) => {
     }
   else labels.push("no data");
   const lengthArray: string[] = [];
-
 
   // LÄNGDER PÅ ELEMENTEN SAMT UPPSÄKRING AV KRASHER
   if (yearFilter?.length > 0) {

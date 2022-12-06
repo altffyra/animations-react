@@ -18,7 +18,7 @@ const Ammountcategories = (props: Props) => {
   ) as unknown as React.MutableRefObject<HTMLInputElement>;
   const state = Flip.getState(".animGen1");
 
-  function doFlip():void {
+  function doFlip(): void {
     elemRef.current.classList.toggle("small");
     elemRef.current.classList.toggle("big");
     elemRef.current.classList.add("disabled");
@@ -30,11 +30,11 @@ const Ammountcategories = (props: Props) => {
         absolute: true,
         scale: true,
       });
-    disableFunctions()
+    disableFunctions();
     disabledTimer();
   }
 
-  function disableFunctions():void {
+  function disableFunctions(): void {
     const divs: NodeListOf<Element> = document.querySelectorAll(".buffer");
     divs.forEach((element) => {
       element.classList.add("disabled");
@@ -62,9 +62,6 @@ const Ammountcategories = (props: Props) => {
     });
   });
 
-
-
-  
   const orderedListNames5: string[] = Object.keys(wins).slice();
 
   const options = {
@@ -89,7 +86,7 @@ const Ammountcategories = (props: Props) => {
           wins[orderedListNames5[0]]?.length,
           wins[orderedListNames5[1]]?.length,
           wins[orderedListNames5[2]]?.length,
-          wins[orderedListNames5[3]]?.length,   
+          wins[orderedListNames5[3]]?.length,
           wins[orderedListNames5[4]]?.length,
           wins[orderedListNames5[5]]?.length,
         ],
