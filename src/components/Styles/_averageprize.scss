@@ -1,13 +1,17 @@
 .ptag{
 
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     width:100%;
+    height:1em;
     flex-direction: row;
      button{
         padding:1%;
         width:40%;
+        .active{
+            background-color: #102d78;
+          }
 
 
     }

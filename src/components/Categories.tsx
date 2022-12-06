@@ -13,31 +13,32 @@ type Props = {
 };
 
 const Ammountcategories = (props: Props) => {
-
   const elemRef = React.useRef(
     ""
   ) as unknown as React.MutableRefObject<HTMLInputElement>;
   const state = Flip.getState(".animGen1");
 
-  function doFlip() {
+  function doFlip():void {
     elemRef.current.classList.toggle("small");
     elemRef.current.classList.toggle("big");
     elemRef.current.classList.add("disabled");
-    
+
     if (props.animation != "")
       Flip.from(state, {
         duration: 1,
         ease: props.animation,
         absolute: true,
-        scale:true
-        
+        scale: true,
       });
-    const divs: NodeListOf<HTMLDivElement> =
-      document.querySelectorAll(".buffer");
+    disableFunctions()
+    disabledTimer();
+  }
+
+  function disableFunctions():void {
+    const divs: NodeListOf<Element> = document.querySelectorAll(".buffer");
     divs.forEach((element) => {
       element.classList.add("disabled");
     });
-    disabledTimer();
   }
 
   function disabledTimer() {
@@ -62,16 +63,17 @@ const Ammountcategories = (props: Props) => {
   });
 
 
+
+  
   const orderedListNames5: string[] = Object.keys(wins).slice();
 
   const options = {
     responsive: true,
     maintainAspectRatio: false,
     layout: {
-      padding: 60
-  },
+      padding: 60,
+    },
   };
-
   const data = {
     labels: [
       orderedListNames5[0],
@@ -87,7 +89,7 @@ const Ammountcategories = (props: Props) => {
           wins[orderedListNames5[0]]?.length,
           wins[orderedListNames5[1]]?.length,
           wins[orderedListNames5[2]]?.length,
-          wins[orderedListNames5[3]]?.length,
+          wins[orderedListNames5[3]]?.length,   
           wins[orderedListNames5[4]]?.length,
           wins[orderedListNames5[5]]?.length,
         ],
@@ -108,11 +110,10 @@ const Ammountcategories = (props: Props) => {
           "rgba(255, 159, 64, 1)",
         ],
         borderWidth: 1,
-        events: ['mousemove', 'mouseout', 'touchstart', 'touchmove'],
+        events: ["mousemove", "mouseout", "touchstart", "touchmove"],
       },
     ],
   };
-
   return (
     <div className="buffer">
       <div ref={elemRef} onClick={() => doFlip()} className={"small animGen1"}>
@@ -122,5 +123,4 @@ const Ammountcategories = (props: Props) => {
     </div>
   );
 };
-
 export default Ammountcategories;

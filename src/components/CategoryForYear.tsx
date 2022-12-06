@@ -33,10 +33,10 @@ const CategoryForYear = (props: Props) => {
         duration: 1,
         ease: props.animation,
         absolute: true,
-        scale:true,
-        fade:true
+        scale: true,
+        fade: true,
       });
-    const divs = document.querySelectorAll(".buffer");
+    const divs: NodeListOf<Element> = document.querySelectorAll(".buffer");
     divs.forEach((element) => {
       element.classList.add("disabled");
     });
@@ -53,27 +53,25 @@ const CategoryForYear = (props: Props) => {
     }, 1500);
   }
 
-  const [size, setsize] = useState<boolean>(false);
-  const sizeElem = size ? "big" : "small";
   const [chosenYear, setchosenYear] = useState<string>("2019");
   const yearFilter: any[] = dataJson.filter(
-    (yeardata) => yeardata.awardYear == chosenYear
+    (yearselected) => yearselected.awardYear == chosenYear
   );
-
 
   const options = {
     responsive: true,
     maintainAspectRatio: false,
     layout: {
-      padding: 60
-  },
+      padding: 60,
+    },
     plugins: {
-      legend:{
-        labels:{
-          font:{
-            size:0}
-        }
-      }
+      legend: {
+        labels: {
+          font: {
+            size: 0,
+          },
+        },
+      },
     },
   };
   let colors = [
@@ -85,29 +83,34 @@ const CategoryForYear = (props: Props) => {
     "#Bad1ce",
   ];
 
-  const labels = [
-    yearFilter[0]?.category.en,
-    yearFilter[1]?.category.en,
-    yearFilter[2]?.category.en,
-    yearFilter[3]?.category.en,
-    yearFilter[4]?.category.en,
-    yearFilter[5]?.category.en
-  ];
+
+  //  KATEGORINAMN SAMT UPPSÄKRING AV KRASHER
+  const labels = [];
+  if (yearFilter?.length > 0)
+    for (var i = 0; i < yearFilter?.length; i++) {
+      labels.push(yearFilter[i]?.category?.en);
+    }
+  else labels.push("no data");
+  const lengthArray: string[] = [];
+
+
+  // LÄNGDER PÅ ELEMENTEN SAMT UPPSÄKRING AV KRASHER
+  if (yearFilter?.length > 0) {
+    const lengthValues = yearFilter.map(
+      (chosenCat) => chosenCat.laureates.length
+    );
+    lengthValues.forEach((element) => {
+      lengthArray.push(element);
+    });
+  } else lengthArray.push("no data");
 
   const data = {
     labels,
     datasets: [
       {
-        data: [
-          yearFilter[0]?.laureates.length,
-          yearFilter[1]?.laureates.length,
-          yearFilter[2]?.laureates.length,
-          yearFilter[3]?.laureates.length,
-          yearFilter[4]?.laureates.length,
-          yearFilter[5]?.laureates.length,
-        ],
+        data: lengthArray,
         backgroundColor: colors,
-        events: ['mousemove', 'mouseout', 'touchstart', 'touchmove'],
+        events: ["mousemove", "mouseout", "touchstart", "touchmove"],
       },
     ],
   };

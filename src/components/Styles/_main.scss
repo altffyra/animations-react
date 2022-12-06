@@ -1,7 +1,7 @@
 .main {
   font-family: "IBM Plex Sans", sans-serif;
   min-height: fit-content;
-  max-width: 1200px;
+  max-width: 1400px;
   width: 80vw;
   background: linear-gradient(#102d78 35%, #ffffff 0%);
   border: 1px solid black;
@@ -11,7 +11,13 @@
   display: flex;
   flex-direction: column;
 
-  .aniNone {
+  .aniNone,
+  .aniBounce,
+  .aniBack,
+  .aniHeavy,
+  .aniSteps,
+  .aniLinear,
+  .aniSpring {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -24,6 +30,7 @@
     top: 20em;
     border-radius: 333px 0px 0px 333px;
     transition: all 0.3s;
+
     &:hover {
       width: 5em;
       left: -5.1em;
@@ -32,6 +39,7 @@
         height: 2.5em;
       }
     }
+
     img {
       width: 40%;
       height: 2em;
@@ -39,173 +47,38 @@
     }
   }
 
+  .aniLinear{
+    top:1em
+  }
   .aniBounce {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    background-color: antiquewhite;
-    border: 1px solid black;
-    width: 4em;
-    height: 3em;
-    left: -4.1em;
-    top: 4em;
-    border-radius: 333px 0px 0px 333px;
-    transition: all 0.3s;
-    &:hover {
-      width: 5em;
-      left: -5.1em;
-      img {
-        width: 2.5em;
-        height: 2.5em;
-      }
-    }
-    img {
-      width: 40%;
-      height: 2em;
-      transition: all 1s;
-    }
+    top: 7em;
   }
 
   .aniBack {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    background-color: antiquewhite;
-    border: 1px solid black;
-    width: 4em;
-    height: 3em;
-    left: -4.1em;
     top: 10em;
-    border-radius: 333px 0px 0px 333px;
-    transition: all 0.3s;
-    &:hover {
-      width: 5em;
-      left: -5.1em;
-      img {
-        width: 2.5em;
-        height: 2.5em;
-      }
-    }
-    img {
-      width: 40%;
-      height: 2em;
-      transition: all 1s;
-    }
   }
 
   .aniHeavy {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    background-color: antiquewhite;
-    border: 1px solid black;
-    width: 4em;
-    height: 3em;
-    left: -4.1em;
     top: 16em;
-    border-radius: 333px 0px 0px 333px;
-    transition: all 0.3s;
-    &:hover {
-      width: 5em;
-      left: -5.1em;
-      img {
-        width: 2.5em;
-        height: 2.5em;
-      }
-    }
-    img {
-      width: 40%;
-      height: 2em;
-      transition: all 1s;
-    }
   }
 
   .aniSteps {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    background-color: antiquewhite;
-    border: 1px solid black;
-    width: 4em;
-    height: 3em;
-    left: -4.1em;
     top: 13em;
-    border-radius: 333px 0px 0px 333px;
-    transition: all 0.3s;
-    &:hover {
-      width: 5em;
-      left: -5.1em;
-      img {
-        width: 2.5em;
-        height: 2.5em;
-      }
-    }
-    img {
-      width: 40%;
-      height: 2em;
-      transition: all 1s;
-    }
   }
 
-  .aniLinear {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    background-color: antiquewhite;
-    border: 1px solid black;
-    width: 4em;
-    height: 3em;
-    left: -4.1em;
-    top: 1em;
-    border-radius: 333px 0px 0px 333px;
-    transition: all 0.3s;
-    &:hover {
-      width: 5em;
-      left: -5.1em;
-      img {
-        width: 2.5em;
-        height: 2.5em;
-      }
-    }
-    img {
-      width: 40%;
-      height: 2em;
-      transition: all 1s;
-    }
-  }
   .aniSpring {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    background-color: antiquewhite;
-    border: 1px solid black;
-    width: 4em;
-    height: 3em;
-    left: -4.1em;
-    top: 7em;
-    border-radius: 333px 0px 0px 333px;
-    transition: all 0.3s;
-
-    img {
-      width: 40%;
-      height: 2em;
-      transition: all 1s;
-    }
-    &:hover {
-      width: 5em;
-      left: -5.1em;
-      img {
-        width: 2.5em;
-        height: 2.5em;
-      }
-    }
+    top: 4em;
   }
+
+  .aniGrow {
+    top: 6em;
+  }
+
+  .aniNone{
+    top:20em;
+  }
+
+
 
   .active {
     background-color: rgb(70, 175, 70);
@@ -214,18 +87,19 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    margin-top: 5%;
+    margin-top: 2%;
+  
     .title {
       justify-self: center;
       align-self: center;
       font-family: "Pinyon Script", cursive;
       color: #ffffff;
-      font-size: 50px;
+      font-size: 40px;
       width: 70%;
       font-weight: 200;
       margin: 0 1em;
       position: relative;
-
+  
       .additionalTitle {
         font-family: "IBM Plex Sans", sans-serif;
         font-size: 0.3em;
@@ -234,7 +108,7 @@
         top: 70%;
       }
     }
-
+  
     .coinIcon {
       border-radius: 60000px;
       padding: 0.5em;
@@ -243,7 +117,6 @@
       margin: 1em;
     }
   }
-
   .allContent {
     position: relative;
     display: grid;
@@ -259,37 +132,37 @@
     background-color: #ffffff;
     box-shadow: 5px 5px 18px 3px rgba(0, 0, 0, 0.25);
 
+   .disabled{
+    pointer-events: none;
+   }
+
+    
     .buffer {
-      justify-self: center;
-      align-self: center;
-      margin: 0.5em 0.5em;
-      width: 500px;
-      border-radius: 7px;
-      transition: all 0.3s;
-
+    justify-self: center;
+    align-self: center;
+    margin: 0.5em 0.5em;
+    width: 500px;
+    border-radius: 7px;
+    transition: all 0.3s;
     }
 
+    
     .buffer:hover {
-      border-radius: 7px;
-
-      box-shadow: 10px 10px 2px rgb(51, 51, 51);
-      margin: 0px 1em 1em 0px;
+    border-radius: 7px;
+    box-shadow: 10px 10px 2px rgb(51, 51, 51);
+    margin: 0px 1em 1em 0px;
     }
-
-    .disabled {
-      pointer-events: none;
-    }
+    
     .small {
-
-      border-radius: 7px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden;
-      flex-direction: column;
-      height: 250px;
-      border: 1px solid black;
-      background-color: #ffffff;
+    border-radius: 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    flex-direction: column;
+    height: 250px;
+    border: 1px solid black;
+    background-color: #ffffff;
 
       button {
         pointer-events: auto;
@@ -298,16 +171,18 @@
         border: 2px solid #102d78;
         font-size: 12px;
         margin: 0 auto;
-        margin-bottom: 0em;
+
+
+
       }
-      canvas{
+      canvas {
         margin-top: -3em;
         padding: 1em;
-        // padding:0 4em 2em;
+
       }
       p {
         margin-top: 5em;
-
+        pointer-events: none;
       }
 
       input[type="number"] {
@@ -336,10 +211,9 @@
       border-radius: 16px;
       padding: 1.7em;
       position: absolute;
-      width: 90%;
+      width: 91%;
       height: 80%;
       background-color: #ffffff;
-
 
       input {
         pointer-events: none;
@@ -349,7 +223,16 @@
         background-color: transparent;
         border: 4px solid #102d78;
         font-size: 19px;
-        margin: 0 auto;
+        margin: 2.5px 2.5px ;
+        transition: all 0.5s;
+        
+
+        &:hover{
+          box-shadow: 5px 5px  black;
+          margin: 0px 7px 7px 0px;
+        }
+
+
       }
 
       input[type="number"] {
@@ -362,7 +245,6 @@
         font-size: 32px;
         margin: 0 auto;
       }
-
     }
   }
 
@@ -398,8 +280,9 @@
     transition: all 0.3s ease-in-out;
 
     .icon {
-      margin: 1em;
-      height: 5em;
+      padding: 0.5em;
+      margin: 0.2em;
+      height: 4em;
       border-radius: 8px;
     }
   }

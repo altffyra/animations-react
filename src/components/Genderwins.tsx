@@ -30,7 +30,7 @@ const Genderwins = (props: Props) => {
         scale:true
       });
 
-    const divs = document.querySelectorAll(".buffer");
+    const divs: NodeListOf<Element> = document.querySelectorAll(".buffer");
     divs.forEach((element) => {
       element.classList.add("disabled");
     });
@@ -40,7 +40,7 @@ const Genderwins = (props: Props) => {
   function disabledTimer() {
     setTimeout(() => {
       elemRef3.current.classList.remove("disabled");
-      const divs = document.querySelectorAll(".buffer");
+      const divs: NodeListOf<Element> = document.querySelectorAll(".buffer");
       divs.forEach((element) => {
         element.classList.remove("disabled");
       });
@@ -71,7 +71,7 @@ const Genderwins = (props: Props) => {
   };
 
   const data = {
-    labels: ["Female", "Male", "Undefined"],
+    labels: ["Female", "Male", "Orgs"],
     datasets: [
       {
         label: "# of Votes",

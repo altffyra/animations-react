@@ -1,5 +1,5 @@
 import React, { useLayoutEffect, useState, useRef, useEffect } from "react";
-import Ammountcategories from "./Ammountcategories";
+import Ammountcategories from "./Categories";
 import Averageprize from "./Averageprize";
 import Genderwins from "./Genderwins";
 import CategoryForYear from "./CategoryForYear";
@@ -25,7 +25,6 @@ const Main = (props: Props) => {
       gsap.to(".flip", { rotation: 360 });
     });
     return () => ctx.revert();
-    setAnimation("none");
   }, []);
 
   const [animation, setAnimation] = useState<string>("");
@@ -87,16 +86,17 @@ const Main = (props: Props) => {
       <div className="header">
         <img className="coinIcon" src={coin} alt="Alfred Nobels coin" />
         <h1 className="title flip">
-          Alfred Nobels pristagare genom historien
-          <p className="additionalTitle">Diagram med data från starten.</p>
+          Alfred Nobels prize nominations throughtout the years
+          <p className="additionalTitle">Charts all the way from the start</p>
         </h1>
       </div>
 
       <div className="allContent">
+      <Averageprize animation={animation} />
         <Ammountcategories animation={animation} />
         <CategoryForYear animation={animation} />
         <Genderwins animation={animation} />
-        <Averageprize animation={animation} />
+
       </div>
 
       <div className="socials">
